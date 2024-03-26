@@ -1,6 +1,7 @@
 # EXPLORE
 
 library(renv)
+library(lexicon)
 
 rm(list=ls());cat('\f')
 gc()
@@ -11,4 +12,6 @@ renv::snapshot()
 # vars----
 lv <- c("a", "e", "i", "o", "u")
 lc <- letters[!letters %in% lv]
+
+
 
