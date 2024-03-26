@@ -25,5 +25,11 @@ mod.dict <- mod.dict[nchar(mod.dict) <= 8 &
 c5 <- sample(lc, size = 5, replace = T)
 
 # choose 3 vowels
-v3 <- sample(lv, size = 5, replace = T)
+v3 <- sample(lv, size = 3, replace = T)
 
+# assemble the scrambled word
+scramble <- c(c5,v3) |> 
+  sort() |>
+  toupper()
+
+# find dict words with scramble letters
