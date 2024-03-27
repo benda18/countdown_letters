@@ -1,7 +1,8 @@
 # EXPLORE
 
 library(renv)
-library(lexicon)
+#library(lexicon)
+library(readr)
 
 rm(list=ls());cat('\f')
 gc()
@@ -14,7 +15,7 @@ lv <- c("a", "e", "i", "o", "u")
 lc <- letters[!letters %in% lv]
 
 # create list of words----
-mod.dict <- lexicon::grady_augmented
+mod.dict <- read_csv("data/scrabbledict.csv")
 mod.dict <- mod.dict[!grepl(pattern = "\'", x = mod.dict)]
 mod.dict <- mod.dict[nchar(mod.dict) <= 8 & 
                        nchar(mod.dict) > 1]
