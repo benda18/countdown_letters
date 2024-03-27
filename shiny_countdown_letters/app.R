@@ -104,7 +104,7 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-  
+  readRDS("scrabble_2to8char.rds")
   
 }
 
