@@ -14,7 +14,7 @@ renv::snapshot()
 lv <- c("a", "e", "i", "o", "u")
 lc <- letters[!letters %in% lv]
 
-# create list of words----
+# load list of words----
 mod.dict <- readRDS("data/scrabble_2to8char.rds")
 
 # GAME STARTS----
@@ -47,6 +47,8 @@ prohibited_words <- grep(pattern = paste(prohibited_ltrs, sep = "|", collapse = 
 # all possible words
 possible_words <- mod.dict[!mod.dict %in% prohibited_words]
 rm(permitted_ltrs, prohibited_ltrs, prohibited_words)
+# remove list of words
+rm(mod.dict)
 
 # definite words - no repeating letters
 nchar_unique <- strsplit(possible_words, "") |>
@@ -92,7 +94,8 @@ for(i.word in possible_words){
   possible_words <- possible_words[!possible_words %in% i.word]
   
 }
-rm(i.word, temp.ltrs)
+rm(i.word, temp.ltrs, i.ltr, n_scramble.ltr, n_temp.ltr, all.letters.good, 
+   possible_words)
 
 dw_words
 
