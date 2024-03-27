@@ -199,6 +199,7 @@ server <- function(input, output) {
   
   scramble
   
+  
   output$testText <- renderText({
     c("foo", "faa")
   })
