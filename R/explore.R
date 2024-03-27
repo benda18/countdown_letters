@@ -14,8 +14,7 @@ lv <- c("a", "e", "i", "o", "u")
 lc <- letters[!letters %in% lv]
 
 # create list of words----
-dict     <- lexicon::grady_augmented
-mod.dict <- dict
+mod.dict <- lexicon::grady_augmented
 mod.dict <- mod.dict[!grepl(pattern = "\'", x = mod.dict)]
 mod.dict <- mod.dict[nchar(mod.dict) <= 8 & 
                        nchar(mod.dict) > 1]
@@ -26,11 +25,14 @@ c5 <- sample(lc, size = 5, replace = T)
 
 # choose 3 vowels
 v3 <- sample(lv, size = 3, replace = T)
+rm(lc,lv)
 
 # assemble the scrambled word
 scramble <- c(c5,v3) |> 
   sort() |>
   toupper()
+rm(c5,v3)
+
 
 # make a list of permitted_letters
 permitted_ltrs <- sort(unique(scramble))
@@ -46,6 +48,7 @@ prohibited_words <- grep(pattern = paste(prohibited_ltrs, sep = "|", collapse = 
 
 # all possible words
 possible_words <- mod.dict[!mod.dict %in% prohibited_words]
+rm(permitted_ltrs, prohibited_ltrs, prohibited_words)
 
 # definite words - no repeating letters
 nchar_unique <- strsplit(possible_words, "") |>
