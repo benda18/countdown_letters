@@ -150,7 +150,7 @@ server <- function(input, output) {
     possible_words <- mod.dict[!mod.dict %in% prohibited_words]
     rm(permitted_ltrs, prohibited_ltrs, prohibited_words)
     # remove list of words
-    rm(mod.dict)
+    #rm(mod.dict)
     
     # definite words - no repeating letters
     nchar_unique <- strsplit(possible_words, "") |>
@@ -201,8 +201,8 @@ server <- function(input, output) {
     
     #dw_words
     
-    longest_words <- dw_words[nchar(dw_words) == max(nchar(dw_words))]
-    longest_words
+     longest_words <- dw_words[nchar(dw_words) == max(nchar(dw_words))]
+     longest_words
     })
   
   # output$testText <- renderText({
