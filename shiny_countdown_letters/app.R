@@ -110,7 +110,7 @@ server <- function(input, output) {
   lc <- letters[!letters %in% lv]
   
   # load list of words----
-  mod.dict <- readRDS("data/scrabble_2to8char.rds")
+  mod.dict <- readRDS("scrabble_2to8char.rds")
   
   # GAME STARTS----
   # choose 5 consonants
