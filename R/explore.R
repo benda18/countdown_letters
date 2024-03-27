@@ -48,7 +48,7 @@ prohibited_words <- grep(pattern = paste(prohibited_ltrs, sep = "|", collapse = 
 
 # all possible words
 possible_words <- mod.dict[!mod.dict %in% prohibited_words]
-rm(permitted_ltrs, prohibited_ltrs, prohibited_words)
+rm(permitted_ltrs, prohibited_ltrs, prohibited_words, mod.dict)
 
 # definite words - no repeating letters
 nchar_unique <- strsplit(possible_words, "") |>
