@@ -22,6 +22,7 @@ mod.dict <- mod.dict[!is.na(mod.dict)]
 mod.dict <- mod.dict[nchar(mod.dict) <= 8 & 
                        nchar(mod.dict) > 1]
 
+#saveRDS(object = mod.dict, file = "data/scrabble_2to8char.rds")
 
 # GAME STARTS----
 # choose 5 consenants
