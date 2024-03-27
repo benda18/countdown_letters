@@ -97,7 +97,8 @@ ui <- fluidPage(
       ),
       wellPanel(
         fluidRow("Possible Words"),
-        shiny::textOutput(outputId = "testText")
+        #shiny::textOutput(outputId = "testText")
+        textOutput(outputId = "fullWords")
       ),
     )
   )
@@ -199,10 +200,13 @@ server <- function(input, output) {
   
   scramble
   
+  output$fullWords <- renderText({
+    longest_words
+    })
   
-  output$testText <- renderText({
-    c("foo", "faa")
-  })
+  # output$testText <- renderText({
+  #   c("foo", "faa")
+  # })
   
   
 }
