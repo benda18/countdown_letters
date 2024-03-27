@@ -96,7 +96,8 @@ ui <- fluidPage(
         ),
       ),
       wellPanel(
-        fluidRow("Possible Words")
+        fluidRow("Possible Words"),
+        shiny::textOutput(outputId = "testText")
       ),
     )
   )
@@ -197,6 +198,11 @@ server <- function(input, output) {
   longest_words <- dw_words[nchar(dw_words) == max(nchar(dw_words))]
   
   scramble
+  
+  output$testText <- renderText({
+    c("foo", "faa")
+  })
+  
   
 }
 
