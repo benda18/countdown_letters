@@ -15,14 +15,7 @@ lv <- c("a", "e", "i", "o", "u")
 lc <- letters[!letters %in% lv]
 
 # create list of words----
-mod.dict <- read_csv("data/scrabble.csv", col_names = "word")
-mod.dict <- mod.dict$word |> unlist() 
-mod.dict <- mod.dict[!is.na(mod.dict)]
-#  filter down to words with 2-8 characters
-mod.dict <- mod.dict[nchar(mod.dict) <= 8 & 
-                       nchar(mod.dict) > 1]
-
-#saveRDS(object = mod.dict, file = "data/scrabble_2to8char.rds")
+mod.dict <- readRDS("data/scrabble_2to8char.rds")
 
 # GAME STARTS----
 # choose 5 consenants
