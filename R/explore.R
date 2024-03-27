@@ -15,8 +15,9 @@ lv <- c("a", "e", "i", "o", "u")
 lc <- letters[!letters %in% lv]
 
 # create list of words----
-mod.dict <- read_csv("data/scrabbledict.csv")
-mod.dict <- mod.dict[!grepl(pattern = "\'", x = mod.dict)]
+mod.dict <- read_csv("data/scrabble.csv", col_names = "word")
+mod.dict <- mod.dict$word |> unlist() 
+#  filter down to words with 2-8 characters
 mod.dict <- mod.dict[nchar(mod.dict) <= 8 & 
                        nchar(mod.dict) > 1]
 
@@ -49,7 +50,7 @@ prohibited_words <- grep(pattern = paste(prohibited_ltrs, sep = "|", collapse = 
 
 # all possible words
 possible_words <- mod.dict[!mod.dict %in% prohibited_words]
-rm(permitted_ltrs, prohibited_ltrs, prohibited_words, mod.dict)
+rm(permitted_ltrs, prohibited_ltrs, prohibited_words)
 
 # definite words - no repeating letters
 nchar_unique <- strsplit(possible_words, "") |>
