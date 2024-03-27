@@ -17,9 +17,11 @@ lc <- letters[!letters %in% lv]
 # create list of words----
 mod.dict <- read_csv("data/scrabble.csv", col_names = "word")
 mod.dict <- mod.dict$word |> unlist() 
+mod.dict <- mod.dict[!is.na(mod.dict)]
 #  filter down to words with 2-8 characters
 mod.dict <- mod.dict[nchar(mod.dict) <= 8 & 
                        nchar(mod.dict) > 1]
+
 
 # GAME STARTS----
 # choose 5 consenants
@@ -99,4 +101,7 @@ for(i.word in possible_words){
 rm(i.word, temp.ltrs)
 
 dw_words
+
+longest_words <- dw_words[nchar(dw_words) == max(nchar(dw_words))]
+
 scramble
