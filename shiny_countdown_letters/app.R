@@ -7,7 +7,11 @@
 #    https://shiny.posit.co/
 #
 
+library(renv)
 library(shiny)
+
+# renv::status()
+# renv::snapshot()
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
