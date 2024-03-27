@@ -57,5 +57,44 @@ nchar_unique <- strsplit(possible_words, "") |>
   unlist()
 
 nchar_full <- nchar(possible_words)
-dw_no.rep.ltrs <- possible_words[nchar_unique == nchar_full]
+dw_words <- possible_words[nchar_unique == nchar_full]
+print(dw_words)
 rm(nchar_full, nchar_unique)
+
+# remaining possible words
+possible_words <- possible_words[!possible_words %in% dw_words]
+
+
+# remove words that have more letters than allowed
+
+for(i.word in possible_words){
+  temp.ltrs <- strsplit(x = i.word, 
+                        split = "") |>
+    unlist()
+  all.letters.good <- NULL
+  for(i.ltr in unique(temp.ltrs)){
+    # number of i.ltr in possible word
+    n_temp.ltr     <- sum(i.ltr == temp.ltrs)
+    # number of i.ltr in scramble word
+    n_scramble.ltr <- sum(i.ltr == tolower(unlist(strsplit(x = scramble, ""))))
+    
+    if(n_scramble.ltr >= n_temp.ltr){
+      
+      all.letters.good <- c(all.letters.good, T)
+    }else{
+      all.letters.good <- c(all.letters.good, F)
+    }
+  }
+  if(all(all.letters.good)){
+    #stop("it's good")
+    # if all letters are good, add to definite words
+    dw_words <- c(dw_words, i.word)
+  }
+  # remove from remaining possible words
+  possible_words <- possible_words[!possible_words %in% i.word]
+  
+}
+rm(i.word, temp.ltrs)
+
+dw_words
+scramble
