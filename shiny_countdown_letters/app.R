@@ -15,40 +15,97 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+  
+  # Application title
+  titlePanel("LETTERS!"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+     
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      wellPanel(
+        fluidRow("Choose 5 Consenants and 3 Vowels"),
+        fluidRow(
+          shiny::column(
+            shiny::textInput(inputId = "c1", 
+                             label = NULL, 
+                             value = "",
+                             #width = 40,
+                             placeholder = "C"), 
+            width = 1),
+          shiny::column(
+            shiny::textInput(inputId = "c2", 
+                             label = NULL, 
+                             value = "",
+                             #width = 40,
+                             placeholder = "C"),
+            width = 1
+          ),
+          shiny::column(
+            shiny::textInput(inputId = "c3", 
+                             label = NULL, 
+                             value = "",
+                             #width = 40,
+                             placeholder = "C"),
+            width = 1
+          ),
+          shiny::column(
+            shiny::textInput(inputId = "c4", 
+                             label = NULL, 
+                             value = "",
+                             #width = 40,
+                             placeholder = "C"),
+            width = 1
+          ),
+          shiny::column(
+            shiny::textInput(inputId = "c5", 
+                             label = NULL, 
+                             value = "",
+                             #width = 40,
+                             placeholder = "C"),
+            width = 1
+          ),
+          shiny::column(
+            shiny::textInput(inputId = "v1", 
+                             label = NULL, 
+                             value = "",
+                             #width = 40,
+                             placeholder = "V"),
+            width = 1
+          ),
+          shiny::column(
+            shiny::textInput(inputId = "v2", 
+                             label = NULL, 
+                             value = "",
+                             #width = 40,
+                             placeholder = "V"),
+            width = 1
+          ),
+          shiny::column(
+            shiny::textInput(inputId = "v3", 
+                             label = NULL, 
+                             value = "",
+                             #width = 40,
+                             placeholder = "V"),
+            width = 1
+          ),
         ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
-        )
+      ),
+      wellPanel(
+        fluidRow("Possible Words")
+      ),
     )
+  )
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
-    })
+  
+  
 }
 
 # Run the application 
